@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router";
 import UserContext from "./UserContext";
+import {useSelector} from "react-redux";
 
 const Title = () => {
   return (
@@ -17,6 +18,7 @@ const Title = () => {
 const HeaderComponent = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const {user} = useContext(UserContext);
+  const cartItems = useSelector((store) => store.cart.items);
   return (
     <header className="bg-orange-100 shadow-md sticky top-0 z-10">
       <div className=" mx-auto px-6 py-4 flex items-center justify-between">
@@ -24,7 +26,7 @@ const HeaderComponent = () => {
 
         <nav>
           <ul className="flex gap-6 items-center">
-            <li><p>{isLoggedIn?user.name:"Please Login"}</p></li>
+            <li><p>{isLoggedIn?"Welcome, "+user.name:"Please Login"}</p></li>
             <li>
               <Link to="/">
                 <button className="text-sm font-medium px-4 py-2 bg-orange-200 cursor-pointer rounded hover:bg-orange-300 transition">
@@ -54,9 +56,13 @@ const HeaderComponent = () => {
               </Link>
             </li>
             <li>
-              <button className="text-sm font-medium px-4 py-2 rounded bg-orange-200 cursor-pointer hover:bg-orange-300 transition">
-                Cart
+              <Link to="/cart">
+              
+              <button className="flex text-sm font-medium px-4 py-2 rounded bg-orange-200 cursor-pointer hover:bg-orange-300 transition">
+                Cart<span className="text-green-600 ml-2">{cartItems.length > 0 &&  " "+cartItems.length}</span>
               </button>
+              </Link>
+              
             </li>
             <li>
               {isLoggedIn ? (

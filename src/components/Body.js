@@ -41,6 +41,8 @@ const Body = () => {
     value={searchText}
     onChange={(e) => {
       setSearchText(e.target.value);
+      const data = filterData(searchText, allRestaurants);
+      setFilteredRestaurants(data);
     }}
   />
   <button
