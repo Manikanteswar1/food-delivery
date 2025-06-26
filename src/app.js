@@ -4,7 +4,7 @@ import HeaderComponent from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import Error from "./components/Error";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
@@ -22,7 +22,7 @@ const AppLayout = () => {
     email: "baddimanikanta15@gmail.com",
   });
   return (
-    <div className="app">
+    <div className="app flex flex-col min-h-screen">
       <Provider store={store}>
       <UserContext.Provider value={{ user: user }}>
         <HeaderComponent />

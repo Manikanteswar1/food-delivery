@@ -2,7 +2,7 @@ import { RestaurantCard } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import { restaurantsList } from "../constants";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useData from "../utils/useData";
 import useOnline from "../utils/useOnline";
