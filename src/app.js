@@ -12,6 +12,7 @@ import UserContext from "./components/UserContext";
 import { Provider } from "react-redux";
 import store from "./utils/store";
 import Cart from "./components/Cart";
+import ShimmerInstamart from "./components/ShimmerInstamart";
 
 
 const Aboutus = lazy(() => import("./components/Aboutus"));
@@ -47,7 +48,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: (
-          <Suspense fallback={<h1>About is Loading............</h1>}>
+          <Suspense fallback={<h1 className="text-2xl text-slate-800 mb-4 flex justify-center mt-6">About is Loading............</h1>}>
             <Aboutus />
           </Suspense>
         ),
@@ -67,7 +68,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/instamart",
         element: (
-          <Suspense fallback={<Shimmer />}>
+          <Suspense fallback={<ShimmerInstamart/>}>
             <Instamart />
           </Suspense>
         ),

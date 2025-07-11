@@ -2,12 +2,12 @@ import React, { useState } from "react";
 
 const Section = ({ name, description, isVisible, setIsVisible }) => {
   return (
-    <div className="border-2 border-gray-300 rounded-lg p-4 m-2 bg-orange-200 shadow-xl group">
+    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 m-4 border border-slate-200 hover:border-amber-300">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-medium text-gray-800">{name}</h2>
+        <h2 className="text-2xl font-bold text-slate-800">{name}</h2>
         {isVisible ? (
           <button
-            className="cursor-pointer bg-red-400 text-white px-3 py-1 rounded hover:bg-red-500 transition-colors group-hover:scale-105"
+            className="cursor-pointer bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 shadow-md"
             onClick={() => {
               setIsVisible(false);
             }}
@@ -16,7 +16,7 @@ const Section = ({ name, description, isVisible, setIsVisible }) => {
           </button>
         ) : (
           <button
-            className="cursor-pointer bg-blue-400 text-white px-3 py-1 rounded hover:bg-blue-500 transition-colors group-hover:scale-105"
+            className="cursor-pointer bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 shadow-md"
             onClick={() => {
               setIsVisible(true);
             }}
@@ -27,8 +27,8 @@ const Section = ({ name, description, isVisible, setIsVisible }) => {
       </div>
       
       {isVisible && (
-        <div className="mt-4 pt-4 border-t border-gray-200">
-          <p className="text-gray-700 leading-relaxed">{description}</p>
+        <div className="mt-6 pt-6 border-t border-slate-200">
+          <p className="text-slate-600 leading-relaxed text-lg">{description}</p>
         </div>
       )}
     </div>
@@ -39,11 +39,16 @@ const Instamart = () => {
   const [visibleSection, setVisibleSection] = useState("about");
   
   return (
-    <div className="p-6">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-semibold text-center mb-8 text-gray-900">
-          Instamart - Quick Grocery Delivery
-        </h1>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-12">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-slate-800 mb-4">
+            Instamart
+          </h1>
+          <p className="text-xl text-slate-600 font-medium">
+            Quick Grocery Delivery
+          </p>
+        </div>
         
         <Section
           name="About Instamart"

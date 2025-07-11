@@ -1,6 +1,6 @@
 
 body {
- background: linear-gradient(to right, #ffe0c3, #ffecd2);
+ background: white;
   height: 100%;
 }
 
@@ -147,7 +147,7 @@ body {
 } */
 
 /* Restaurant Card */
-.restaurant-list {
+/* .restaurant-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -155,7 +155,7 @@ body {
 .restaurant-list a {
   text-decoration: none;
   color: inherit;
-}
+} */
 
 /* .card {
   width: 220px;

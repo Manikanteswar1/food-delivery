@@ -7,8 +7,6 @@ import { filterData } from "../utils/helper";
 import useData from "../utils/useData";
 import useOnline from "../utils/useOnline";
 
-
-
 const Body = () => {
   const {
     allRestaurants,
@@ -18,53 +16,68 @@ const Body = () => {
     setSearchText,
   } = useData();
 
-
   const isOnline = useOnline();
 
   if (!isOnline) {
-    return <h1>Looks like you are offline. Please check your internet connection.</h1>;
+    return (
+      <div className="flex justify-center items-center h-96 bg-gradient-to-br from-slate-100 to-slate-200">
+        <div className="text-center p-8 bg-white rounded-lg shadow-lg border border-slate-300">
+          <h1 className="text-2xl font-bold text-slate-800 mb-4">Connection Lost</h1>
+          <p className="text-slate-600">Please check your internet connection and try again.</p>
+        </div>
+      </div>
+    );
   }
 
-  // if (!allRestaurants) return null;
+  if (!allRestaurants || allRestaurants.length === 0) {
+    return <Shimmer />;
+  }
+
   
-  // if (filteredRestaurants?.length === 0 && allRestaurants?.length === 0) {
-  //   return <h1>No Restaurants Found</h1>;
-  // }
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      <div className="container mx-auto px-4 py-8">
+        <div className="search-container flex flex-col sm:flex-row justify-center mb-8">
+          <div className="relative flex w-full sm:w-96 shadow-lg">
+            <input
+              type="text"
+              className="flex-1 px-6 py-3 border-2 border-slate-300 rounded-l-lg bg-white text-slate-800 placeholder-slate-500 focus:outline-none focus:border-amber-400 transition-all duration-300"
+              placeholder="Search for restaurants..."
+              value={searchText}
+              onChange={(e) => {
+                const newText = e.target.value;
+                setSearchText(newText);
+                const data = filterData(newText, allRestaurants);
+                setFilteredRestaurants(data);
+              }}
+            />
+            <button
+              className="px-6 py-3 bg-amber-600 text-white font-semibold rounded-r-lg hover:bg-amber-700 transition-all duration-300 shadow-md border-2 border-amber-600 hover:border-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer"
+              onClick={() => {
+                const data = filterData(searchText, allRestaurants);
+                setFilteredRestaurants(data);
+              }}
+            >
+              Search
+            </button>
+          </div>
+        </div>
 
-  return (filteredRestaurants?.length===0) ? <Shimmer/> :(
-    <>
-      <div className="search-container flex flex-col sm:flex-row justify-center mt-4">
-  <input
-    type="text"
-    className="px-4 py-2 border border-gray-500 rounded-lg rounded-r-none shadow-sm focus:outline-none focus:ring-1 focus:ring-orange-400 w-full sm:w-72"
-    placeholder="Search for restaurants..."
-    value={searchText}
-    onChange={(e) => {
-      setSearchText(e.target.value);
-      const data = filterData(searchText, allRestaurants);
-      setFilteredRestaurants(data);
-    }}
-  />
-  <button
-    className="px-2 bg-orange-500 text-white font-medium rounded-lg rounded-l-none  hover:bg-orange-600 transition-all duration-300 shadow-md w-full sm:w-auto"
-    onClick={() => {
-      const data = filterData(searchText, allRestaurants);
-      setFilteredRestaurants(data);
-    }}
-  >
-    Search
-  </button>
-</div>
-
-    
-       
-      <div className="restaurant-list pt-4">
-        {filteredRestaurants?.map((restaurant) => {
-          return <Link to={"/restaurant/"+ restaurant?.info?.id}  key={restaurant?.info?.id}><RestaurantCard {...restaurant} /></Link>
-        })}
+        <div className="restaurant-list flex flex-wrap justify-center">
+          {filteredRestaurants?.map((restaurant) => {
+            return (
+              <Link
+                to={"/restaurant/" + restaurant?.info?.id}
+                key={restaurant?.info?.id}
+                className="w-full max-w-xs"
+              >
+                <RestaurantCard {...restaurant} />
+              </Link>
+            );
+          })}
+        </div>
       </div>
-      
-    </>
+    </div>
   );
 };
 
