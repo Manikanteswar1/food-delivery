@@ -28,7 +28,8 @@ const useData = () => {
         setFilteredRestaurants(restaurantsList);
       }
     } catch (err) {
-      console.error("Error fetching restaurant data", err);
+      console.error("Error fetching restaurant data, ⚠️ Enable CORS extension to get menu data as it is real Swiggy API ⚠️", err);
+  
       setAllRestaurants(restaurantsList);
       setFilteredRestaurants(restaurantsList);
     }

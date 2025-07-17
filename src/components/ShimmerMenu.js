@@ -3,6 +3,15 @@ import React from "react";
 const ShimmerMenu = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8 animate-pulse">
+      <div className="flex justify-center mb-8">
+        <div className="bg-amber-100 border border-amber-300 text-amber-800 text-sm font-medium py-2 px-4 rounded !animate-none whitespace-nowrap">
+          {/* <marquee scrollamount="5"> */}
+          ⚠️ To view live restaurant menu data, please enable your browser's
+          CORS extension — this is required because the data is fetched from
+          Swiggy's real API.
+          {/* </marquee> */}
+        </div>
+      </div>
       <div className="container mx-auto px-4 max-w-6xl space-y-10">
         {/* Restaurant header shimmer */}
         <div className="bg-white rounded-xl shadow-lg p-8 border border-slate-200">

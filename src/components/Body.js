@@ -22,8 +22,12 @@ const Body = () => {
     return (
       <div className="flex justify-center items-center h-96 bg-gradient-to-br from-slate-100 to-slate-200">
         <div className="text-center p-8 bg-white rounded-lg shadow-lg border border-slate-300">
-          <h1 className="text-2xl font-bold text-slate-800 mb-4">Connection Lost</h1>
-          <p className="text-slate-600">Please check your internet connection and try again.</p>
+          <h1 className="text-2xl font-bold text-slate-800 mb-4">
+            Connection Lost
+          </h1>
+          <p className="text-slate-600">
+            Please check your internet connection and try again.
+          </p>
         </div>
       </div>
     );
@@ -33,10 +37,10 @@ const Body = () => {
     return <Shimmer />;
   }
 
-  
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="container mx-auto px-4 py-8">
+        
         <div className="search-container flex flex-col sm:flex-row justify-center mb-8">
           <div className="relative flex w-full sm:w-96 shadow-lg">
             <input
