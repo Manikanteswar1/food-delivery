@@ -16,10 +16,9 @@ const useData = () => {
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
       );
       const json = await data.json();
-
       const apiData =
-        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      
       if (apiData?.length > 0) {
         setAllRestaurants(apiData);
         setFilteredRestaurants(apiData);
@@ -28,10 +27,9 @@ const useData = () => {
         setFilteredRestaurants(restaurantsList);
       }
     } catch (err) {
-      console.error("Error fetching restaurant data, ⚠️ Enable CORS extension to get menu data as it is real Swiggy API ⚠️", err);
-  
+      console.warn("Error fetching restaurant data, ⚠️ Enable CORS extension to get menu data as it is real Swiggy API ⚠️", err);
       setAllRestaurants(restaurantsList);
-      setFilteredRestaurants(restaurantsList);
+      setFilteredRestaurants(restaurantsList);  
     }
   }
 

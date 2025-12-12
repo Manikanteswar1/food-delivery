@@ -25,10 +25,12 @@ const Section = ({ name, description, isVisible, setIsVisible }) => {
           </button>
         )}
       </div>
-      
+
       {isVisible && (
         <div className="mt-6 pt-6 border-t border-slate-200">
-          <p className="text-slate-600 leading-relaxed text-lg">{description}</p>
+          <p className="text-slate-600 leading-relaxed text-lg">
+            {description}
+          </p>
         </div>
       )}
     </div>
@@ -37,19 +39,17 @@ const Section = ({ name, description, isVisible, setIsVisible }) => {
 
 const Instamart = () => {
   const [visibleSection, setVisibleSection] = useState("about");
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-12">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-slate-800 mb-4">
-            Instamart
-          </h1>
+          <h1 className="text-5xl font-bold text-slate-800 mb-4">Instamart</h1>
           <p className="text-xl text-slate-600 font-medium">
             Quick Grocery Delivery
           </p>
         </div>
-        
+
         <Section
           name="About Instamart"
           description={
@@ -60,7 +60,7 @@ const Instamart = () => {
             setVisibleSection(visibleSection === "about" ? "" : "about");
           }}
         />
-        
+
         <Section
           name="Our Products"
           description={
@@ -71,7 +71,7 @@ const Instamart = () => {
             setVisibleSection(visibleSection === "product" ? "" : "product");
           }}
         />
-        
+
         <Section
           name="Contact & Support"
           description={
@@ -82,7 +82,7 @@ const Instamart = () => {
             setVisibleSection(visibleSection === "contact" ? "" : "contact");
           }}
         />
-        
+
         <Section
           name="Delivery Information"
           description={
@@ -93,7 +93,7 @@ const Instamart = () => {
             setVisibleSection(visibleSection === "delivery" ? "" : "delivery");
           }}
         />
-        
+
         <Section
           name="Pricing & Offers"
           description={

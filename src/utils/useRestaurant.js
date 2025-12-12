@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Restaurant_Menu_URL } from "../constants";
+import { menuDataTest, Restaurant_Menu_URL } from "../constants";
+
 const useRestaurant = (restaurantId) => {
   const [restaurant, setRestaurant] = useState(null);
   const [menu, setMenu] = useState([]);
@@ -9,10 +10,13 @@ const useRestaurant = (restaurantId) => {
   }, []);
 
   async function getRestaurantInfo() {
-    const data = await fetch(Restaurant_Menu_URL + restaurantId); //Api Call
-    const json = await data.json();
-    const restaurantData = json?.data?.cards[2]?.card?.card?.info;
-    const menuData = json?.data?.cards
+    // const data = await fetch(Restaurant_Menu_URL + restaurantId); //Api Call
+    // const json = await data.json();
+
+    const Testdata = menuDataTest;   //Using Local Data due to CORS Policy
+
+    const restaurantData = Testdata?.data?.cards[2]?.card?.card?.info; //json?.data?.cards[2]?.card?.card?.info; for api call
+    const menuData = Testdata.data?.cards      //json?.data?.cards for api call
       ?.find((obj) => obj?.groupedCard)
       ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
         (obj) =>
